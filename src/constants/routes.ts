@@ -1,1 +1,1 @@
-export const ORIGIN = 'https://swapi.dev/api/';
+export const ORIGIN = "https://swapi.dev/api";

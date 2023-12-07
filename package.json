@@ -7,19 +7,26 @@
     "@epam/uui": "5.4.1",
     "@epam/uui-components": "5.4.1",
     "@epam/uui-core": "5.4.1",
+    "@tanstack/query-sync-storage-persister": "^5.12.1",
+    "@tanstack/react-query": "^5.12.2",
+    "@tanstack/react-query-persist-client": "^5.12.2",
+    "@types/lodash.isempty": "^4.4.9",
+    "axios": "^1.6.2",
     "history": "^4.10.1",
+    "lodash.isempty": "^4.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^5.3.4",
     "react-scripts": "5.0.1",
     "sass": "^1.57.1",
-    "typescript": "4.9.3"
+    "typescript": "*"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "eslint-fix": "yarn eslint --fix"
   },
   "eslintConfig": {
     "extends": [
@@ -46,9 +53,17 @@
     "@types/jest": "^27.5.2",
     "@types/node": "16.18.4",
     "@types/react": "18.2.21",
-    "@types/react-router-dom": "^5.3.3"
+    "@types/react-router-dom": "^5.3.3",
+    "@typescript-eslint/eslint-plugin": "^6.13.2",
+    "@typescript-eslint/parser": "^6.13.2",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react": "^7.33.2"
   },
   "resolutions": {
     "@types/react": "18.2.21"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/dsv-sergey/star-wars-spa.git",
+  "author": "Siarhei Dzeraviannik <dsv-sergey@mail.ru>",
+  "license": "MIT"
 }

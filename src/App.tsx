@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 import { MainPage } from "./pages/MainPage";
 import { PersonPage } from "./pages/PersonPage";
@@ -8,8 +8,11 @@ class App extends React.Component {
     render() {
         return (
             <Switch>
-                <Route path="/" component={ MainPage } />
-                <Route path="/person/:id" component={ PersonPage } />
+                <Route exact path="/person/:id" component={ PersonPage } />
+                <Route exact path="/person"  component={ MainPage } />
+                <Route exact path="/">
+                    <Redirect to="/person" />
+                </Route>
             </Switch>
         );
     }

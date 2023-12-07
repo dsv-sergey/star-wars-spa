@@ -1,32 +1,32 @@
-import '@epam/uui-components/styles.css';
-import '@epam/uui/styles.css';
-import './index.module.scss';
-import './assets/theme/theme-faraway.scss';
+import "@epam/uui-components/styles.css";
+import "@epam/uui/styles.css";
+import "./index.module.scss";
+import "./assets/theme/theme-faraway.scss";
 //
-import { StrictMode } from "react";
-import { createRoot } from 'react-dom/client';
+import React, { StrictMode } from "react";
+import { QueryClientProvider } from "@tanstack/react-query";
+// eslint-disable-next-line react/no-deprecated
+import { render } from "react-dom";
 import { createBrowserHistory } from "history";
 import { Router } from "react-router-dom";
-import { DragGhost, HistoryAdaptedRouter, useUuiServices, UuiContext, IProcessRequest } from "@epam/uui-core";
-
+import { DragGhost, HistoryAdaptedRouter, useUuiServices, UuiContext } from "@epam/uui-core";
 import { Modals, Snackbar } from "@epam/uui-components";
+import { createQueryClient } from "./services";
 import App from "./App";
-import { getApi } from "./api";
-import { ORIGIN } from "./constants/routes";
 
 const history = createBrowserHistory();
 const router = new HistoryAdaptedRouter(history);
-function apiDefinition(processRequest: IProcessRequest) {
-    return getApi({ processRequest, origin: ORIGIN, fetchOptions: { credentials: undefined } });
-}
+const queryClient = createQueryClient();
 
 function UuiEnhancedApp() {
-    const { services } = useUuiServices({ apiDefinition, router });
+    const { services } = useUuiServices({ router });
     return (
         <UuiContext.Provider value={ services }>
-            <Router history={history}>
-                <App />
-            </Router>
+            <QueryClientProvider client={ queryClient }>
+                <Router history={history}>
+                    <App />
+                </Router>
+            </QueryClientProvider>
             <Snackbar />
             <Modals />
             <DragGhost />
@@ -35,11 +35,11 @@ function UuiEnhancedApp() {
 }
 
 function initApp() {
-    const root = createRoot(window.document.getElementById('root') as Element);
-    root.render(
+    render(
         <StrictMode>
             <UuiEnhancedApp />
-        </StrictMode>
+        </StrictMode>,
+        window.document.getElementById("root")
     );
 }
 
