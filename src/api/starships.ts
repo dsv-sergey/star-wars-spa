@@ -1,5 +1,6 @@
 import axios from "axios";
 import { ORIGIN } from "constants/routes";
+import { STARSHIPS_KEY, STARSHIPS_PAGE_KEY } from "constants/keys";
 import { LazyDataSourceApiRequest } from "@epam/uui-core";
 import { IPersonsRequest, IStarships } from "types";
 import { queryClient } from "services";
@@ -13,9 +14,6 @@ export const fetchStarships = async (page: number) => {
 
     return data;
 };
-
-const STARSHIPS_KEY = "STARSHIPS";
-const STARSHIPS_PAGE_KEY = "STARSHIPS_PAGE";
 
 export const lazyStarshipsApi = async (rq: LazyDataSourceApiRequest<IStarships, string, unknown>) => {
     const { ids, range } = rq;

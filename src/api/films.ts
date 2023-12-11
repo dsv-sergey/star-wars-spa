@@ -1,5 +1,6 @@
 import axios from "axios";
 import { ORIGIN } from "constants/routes";
+import { FILMS_KEY, FILMS_PAGE_KEY } from "constants/keys";
 import { LazyDataSourceApiRequest } from "@epam/uui-core";
 import { IFilm, IPersonsRequest } from "types";
 import { queryClient } from "services";
@@ -13,9 +14,6 @@ export const fetchFilms = async (page: number) => {
 
     return data;
 };
-
-const FILMS_KEY = "FILMS";
-const FILMS_PAGE_KEY = "FILMS_PAGE";
 
 export const lazyFilmsApi = async (rq: LazyDataSourceApiRequest<IFilm, string, unknown>) => {
     const { ids, range } = rq;

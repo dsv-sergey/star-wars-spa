@@ -1,5 +1,6 @@
 import axios from "axios";
 import { ORIGIN } from "constants/routes";
+import { SPECIES_KEY, SPECIES_PAGE_KEY } from "constants/keys";
 import { LazyDataSourceApiRequest } from "@epam/uui-core";
 import { IPersonsRequest, ISpecies } from "types";
 import { queryClient } from "services";
@@ -13,9 +14,6 @@ export const fetchSpecies = async (page: number) => {
 
     return data;
 };
-
-const SPECIES_KEY = "SPECIES";
-const SPECIES_PAGE_KEY = "SPECIES_PAGE";
 
 export const lazySpeciesApi = async (rq: LazyDataSourceApiRequest<ISpecies, string, unknown>) => {
     const { ids, range } = rq;

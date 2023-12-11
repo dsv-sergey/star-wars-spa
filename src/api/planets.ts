@@ -1,6 +1,7 @@
 import axios from "axios";
 import { LazyDataSourceApiRequest } from "@epam/uui-core";
 import { ORIGIN } from "constants/routes";
+import { PLANETS_KEY, PLANETS_PAGE_KEY } from "constants/keys";
 import { IPersonsRequest, IPlanet } from "types";
 import { queryClient } from "services";
 import { fetchData } from "./data";
@@ -14,8 +15,7 @@ export const fetchPlanets = async (page: number) => {
     return data;
 };
 
-const PLANETS_KEY = "PLANETS";
-const PLANETS_PAGE_KEY = "PLANETS_PAGE";
+
 
 export const lazyPlanetsApi = async (rq: LazyDataSourceApiRequest<IPlanet, string, unknown>) => {
     const { ids, range } = rq;

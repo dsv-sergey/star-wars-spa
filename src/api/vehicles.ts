@@ -1,5 +1,6 @@
 import axios from "axios";
 import { ORIGIN } from "constants/routes";
+import { VEHICLES_KEY, VEHICLES_PAGE_KEY } from "constants/keys";
 import { LazyDataSourceApiRequest } from "@epam/uui-core";
 import { IPersonsRequest, IVehicles } from "types";
 import { queryClient } from "services";
@@ -14,9 +15,6 @@ export const fetchVehicles = async (page: number) => {
 
     return data;
 };
-
-const VEHICLES_KEY = "VEHICLES";
-const VEHICLES_PAGE_KEY = "VEHICLES_PAGE";
 
 export const lazyVehiclesApi = async (rq: LazyDataSourceApiRequest<IVehicles, string, unknown>) => {
     const { ids, range } = rq;
